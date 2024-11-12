@@ -10,29 +10,28 @@ function App() {
 
   return (
     <>
-    <h2>Personaje Pokemon</h2>
-      {errorPokemon ? (
+      {errorPokemon ? 
         <p>Error: {errorPokemon}</p>
-      ) : pokemonData ? (
-        <Character
-          nombre={pokemonData.name}
-          imagen={pokemonData.sprites.front_default}
-        />
-      ) : (
+       : !pokemonData ? 
         <p>Cargando...</p>
-      )}
-
-      <h2>Personaje Rick and Morty</h2>
-      {errorRick ? (
-        <p>Error: {errorRick}</p>
-      ) : rickData ? (
+       : 
         <Character
+          title="Personaje Pokemon"
+          nombre={pokemonData.name}
+          imagen={pokemonData.sprites?.front_default}
+        />
+      }
+      {errorRick ? 
+        <p>Error: {errorRick}</p>
+       : !rickData ? 
+        <p>Cargando...</p>
+       : 
+        <Character
+          title="Personaje Rick and Morty"
           nombre={rickData.name}
           imagen={rickData.image}
         />
-      ) : (
-        <p>Cargando...</p>
-      )}
+      }
     </>
   );
 }
